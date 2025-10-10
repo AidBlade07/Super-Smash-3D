@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    public float xAngle;
+    public float yAngle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +20,12 @@ public class CameraScript : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
         float yRot = mouseX;
         float xRot = mouseY;
-        transform.Rotate(new Vector3(-xRot, yRot, 0));
-        transform.eulerAngles = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        xAngle -= xRot;
+        yAngle += yRot;
+        xAngle = Mathf.Clamp(xAngle, -85, 85);
+        transform.eulerAngles = new Vector3 (xAngle, yAngle, 0);
 
+        //transform.Rotate(new Vector3(-xRot, yRot, 0));
         
         print(mouseX);
         print(mouseY);
