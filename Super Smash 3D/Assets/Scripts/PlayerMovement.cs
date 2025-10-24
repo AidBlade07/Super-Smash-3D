@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpHeight;
     public GameObject[] inventory;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +84,20 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(xMovement);
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            if (pauseMenu.activeSelf)
+            {
+                Time.timeScale = 0.000001f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+        }
+
+
 
 
         /*
@@ -96,9 +110,15 @@ public class PlayerMovement : MonoBehaviour
 
         */
 
-        if (Input.GetKeyDown("space"))
-            rb.AddForce(new Vector3(0, jumpHeight, 0));
-// BROOOOOOOOOO IM ACTUALLY A GENIUS I LITERALLY FIGURED OUT HOW TO CHANGE THE TRANSFORM.TRANSLATE THING *ON MY OWN* RAHHHHHHHH
+
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        if(Physics.Raycast(transform.position, Vector3.down, 1.01f))
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                rb.AddForce(new Vector3(0, jumpHeight, 0));
+            }   
         }
     }
+}
 

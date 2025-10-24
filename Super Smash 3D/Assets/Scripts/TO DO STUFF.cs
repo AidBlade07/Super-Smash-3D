@@ -46,15 +46,29 @@ Menu screen stuff
 
 
 To do
-    * Add nerf blasters
-    * Add enemies
-    * Add player
-    * Add movement
-    * Add camera moving
-    * Add crouching
-    * Add ammo/reloading
-    * Weapon switching
-    * Add character models (smth to do on my time)
-    * Add separate menus
-    * Change movement to addForce
-*/
+    * [ ] Add nerf blasters
+    * [ ] Add enemies
+    * [ ] Add player
+    * [d] Add movement
+    * [d] Add camera moving
+    * [ ] Add crouching
+    * [ ] Add ammo/reloading
+    * [ ] Weapon switching
+    * [ ] Add character models (smth to do on my time)
+    * [p] Add separate menus
+    * [x] Change movement to addForce
+        (ended up ditching this and doing transform.translate)
+    *
+    *
+
+Key: 
+D = Done 
+P = In progress
+X = Decided against it
+
+ 
+ 
+ 
+ 
+ 
+ */
