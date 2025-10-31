@@ -16,9 +16,15 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight;
     public GameObject[] inventory;
     public GameObject pauseMenu;
+    public float gamePauseSpeed;
+    public float gameSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        //note to self: when setting/initalizing a variable, you can't include the data type or privacy modifier (public or private)
+        gamePauseSpeed = 0.000001f;
+        gameSpeed = 1.0f;
+
         rb = GetComponent<Rigidbody>();
         Renderer rend = GetComponent<Renderer>();
         rend.enabled = false;
@@ -89,11 +95,11 @@ public class PlayerMovement : MonoBehaviour
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             if (pauseMenu.activeSelf)
             {
-                Time.timeScale = 0.000001f;
+                Time.timeScale = gamePauseSpeed;
             }
             else
             {
-                Time.timeScale = 1f;
+                Time.timeScale = gameSpeed;
             }
         }
 
@@ -116,7 +122,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                rb.AddForce(new Vector3(0, jumpHeight, 0));
+                if(Time.timeScale == gameSpeed)
+                {
+                    rb.AddForce(new Vector3(0, jumpHeight, 0));
+                }
             }   
         }
     }

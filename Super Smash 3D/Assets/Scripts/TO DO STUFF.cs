@@ -35,6 +35,9 @@ Menu screen stuff
         Global Volume
 
     Credits
+        
+        @reallyz1ncx on YouTube
+
         Michael - Project Director
         Michael - Lead Developer
         z1ncx - Lead Developer
@@ -58,7 +61,7 @@ To do
     * [p] Add separate menus
     * [x] Change movement to addForce
         (ended up ditching this and doing transform.translate)
-    *
+    * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
     *
 
 Key: 
