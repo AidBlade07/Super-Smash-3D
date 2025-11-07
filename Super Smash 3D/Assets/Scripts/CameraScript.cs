@@ -6,6 +6,8 @@ public class CameraScript : MonoBehaviour
 {
     public float xAngle;
     public float yAngle;
+    public bool cameraIsLockedOn;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,17 @@ public class CameraScript : MonoBehaviour
         print(mouseX);
         print(mouseY);
 
+        if(cameraIsLockedOn)
+        {
+            transform.position = player.transform.position;
+        }
+        else
+        {
+
+        }
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            cameraIsLockedOn = !cameraIsLockedOn;
+        }
     }
 }

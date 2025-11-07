@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         Renderer rend = GetComponent<Renderer>();
-        rend.enabled = false;
+        rend.enabled = true;
     }
 
     // Update is called once per frame
@@ -42,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 zMovement = camT.forward * speed * Time.deltaTime;
         xMovement = new Vector3(xMovement.x, 0, xMovement.z);
         zMovement = new Vector3(zMovement.x, 0, zMovement.z);
+        xMovement.Normalize();
+        zMovement.Normalize();
 
 
         //new Vector3(speed * Time.deltaTime, 0, 0);
@@ -75,19 +77,19 @@ public class PlayerMovement : MonoBehaviour
 
         else if (Input.GetKey("w"))
         {
-            transform.Translate(zMovement);
+            transform.Translate(zMovement * speed * Time.deltaTime);
         }
         else if (Input.GetKey("a"))
         {
-            transform.Translate(-xMovement);
+            transform.Translate(-xMovement * speed * Time.deltaTime);
         }
         else if (Input.GetKey("s"))
         {
-            transform.Translate(-zMovement);
+            transform.Translate(-zMovement * speed * Time.deltaTime);
         }
         else if (Input.GetKey("d"))
         {
-            transform.Translate(xMovement);
+            transform.Translate(xMovement * speed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.P))

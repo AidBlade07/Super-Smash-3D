@@ -51,6 +51,7 @@ Menu screen stuff
 To do
     * [ ] Add nerf blasters
     * [ ] Add enemies
+    *   [ ] Add enemy movement
     * [ ] Add player
     * [d] Add movement
     * [d] Add camera moving
@@ -60,16 +61,18 @@ To do
     * [ ] Add character models (smth to do on my time)
     * [p] Add separate menus
     * [x] Change movement to addForce
-        (ended up ditching this and doing transform.translate)
+            (ended up ditching this and doing transform.translate)
     * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
-    *
 
 Key: 
 D = Done 
 P = In progress
 X = Decided against it
 
- 
+ Notes:
+    1. Naming variables well is good, avoid making it too perfect to avoid confusion between your variable, and unity/wtv engine you use
+    2. data types must be named EXACTLY with CORRECT capitalization. ex: GameObject =/ gameobject
+    3. ! is the NOT operator, also can be used for toggle  ex: cameraIsLockedOn = !cameraIsLockedOn;
  
  
  
