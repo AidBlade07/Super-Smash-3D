@@ -12,13 +12,6 @@
  * multiplayer?? (probably not but a man can dream)
  * background music
 
-MAKE GITHUB REPO
-MAKE GITHUB REPO
-MAKE GITHUB REPO
-MAKE GITHUB REPO
-MAKE GITHUB REPO
-
-
 
 Menu screen stuff
     Play
@@ -73,6 +66,12 @@ X = Decided against it
     1. Naming variables well is good, avoid making it too perfect to avoid confusion between your variable, and unity/wtv engine you use
     2. data types must be named EXACTLY with CORRECT capitalization. ex: GameObject =/ gameobject
     3. ! is the NOT operator, also can be used for toggle  ex: cameraIsLockedOn = !cameraIsLockedOn;
+    4. any data type that has an undeclared value is ALWAYS null (boneworks reference??)
+    5. you dont need to say public or private when declaring a data type UNLESS, you are outside of a method but inside the class.
+    6. variables are lowercase, functions are capitalized
+        -primative datatypes are lowercase such as: int, float, string, float, bool, double, byte, char, uint, etc.
+    7. class names are capitals such as: GameObject, Vector3, Quaternian, Rigidbody
+    8. Instatiate has multiple ways to utilize/call/invoke it - Object(what is being instantiated) Vector3(position), Quaternion(rotation) Transform(parent of the object)
  
  
  
