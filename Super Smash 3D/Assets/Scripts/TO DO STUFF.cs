@@ -56,6 +56,7 @@ To do
     * [x] Change movement to addForce
             (ended up ditching this and doing transform.translate)
     * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
+    * [p] Connect weapon to the player + rotation
 
 Key: 
 D = Done 
