@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.identity;
-        float x = rb.velocity.x;
-        float y = rb.velocity.y;
-        float z = rb.velocity.z;
+        float x = rb.linearVelocity.x;
+        float y = rb.linearVelocity.y;
+        float z = rb.linearVelocity.z;
 
         Vector3 xMovement = camT.right * speed * Time.deltaTime;
         Vector3 zMovement = camT.forward * speed * Time.deltaTime;
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         */
 
 
-        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
         if(Physics.Raycast(transform.position, Vector3.down, 1.01f))
         {
             if (Input.GetKeyDown("space"))

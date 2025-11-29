@@ -25,6 +25,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
-        rbE.velocity = new Vector3(0, rbE.velocity.y, 0);
+        rbE.linearVelocity = new Vector3(0, rbE.linearVelocity.y, 0);
     }
 }
