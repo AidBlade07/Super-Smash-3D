@@ -29,8 +29,8 @@ public class CameraScript : MonoBehaviour
 
         //transform.Rotate(new Vector3(-xRot, yRot, 0));
         
-        print(mouseX);
-        print(mouseY);
+        //print(mouseX);
+        //print(mouseY);
 
         if(cameraIsLockedOn)
         {
