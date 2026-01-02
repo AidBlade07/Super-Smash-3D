@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
             Vector3 kbVector = transform.forward * enemyKnockback;
             rbE.AddForce(kbVector);
             print(kbVector);
+            other.gameObject.SendMessage("GotHit");
         }
     }
 }
