@@ -2730,8 +2730,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5478437994752853115, guid: 3e94a9e835dcf9b4eb69e29234bf2e20, type: 3}
-  ammoLight: 100
+  ammoLight: 12
+  reserveLightAmmo: 60
   ammoL: {fileID: 1966311060}
+  lightMagSize: 0
+  extendedClipLight: 1
 --- !u!1 &1966311059
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,6 +73,11 @@ X = Decided against it
         -primative datatypes are lowercase such as: int, float, string, float, bool, double, byte, char, uint, etc.
     7. class names are capitals such as: GameObject, Vector3, Quaternian, Rigidbody
     8. Instatiate has multiple ways to utilize/call/invoke it - Object(what is being instantiated) Vector3(position), Quaternion(rotation) Transform(parent of the object)
+    9. (nameof does not work if the method you are calling isnt in the same script, it has to be "(methodname)"
+    10. in order to SET a rotation, it would be:
+            transform.eulerAngles = new Vector3(the rotation)
+        but to add it would be:
+            transform.Rotate(the rotation)
  
  
  
