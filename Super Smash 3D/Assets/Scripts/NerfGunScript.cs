@@ -11,7 +11,9 @@ public class NerfGunScript : MonoBehaviour
     public int reserveLightAmmo;
     public TMP_Text ammoL;
     public int lightMagSize;
+    public GameObject spinOffset;
     public bool extendedClipLight;
+    public float spinSpeed;
     private bool reloading;
     private bool spinning;
     // Start is called before the first frame update
@@ -54,11 +56,11 @@ public class NerfGunScript : MonoBehaviour
 
         if(spinning)
         {
-            transform.Rotate(1f, 0, 0);
+            spinOffset.transform.Rotate(spinSpeed * Time.deltaTime, 0, 0);
         }
         else
         {
-            transform.localEulerAngles = new Vector3(0, 0, 0);
+            spinOffset.transform.localEulerAngles = new Vector3(0, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -70,10 +72,10 @@ public class NerfGunScript : MonoBehaviour
     }
     void ReloadLight()
     {
+        reserveLightAmmo -= (lightMagSize - ammoLight);
         ammoLight = lightMagSize;
         ammoL.text = ammoLight + "/" + reserveLightAmmo;
         reloading = false;
         spinning = false;
-
     }
 }

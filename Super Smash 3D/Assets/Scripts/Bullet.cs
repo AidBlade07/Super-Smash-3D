@@ -8,11 +8,13 @@ public class Bullet : MonoBehaviour
     private Rigidbody rb;
     public float bulletSpeed;
     public float enemyKnockback;
+    public float bulletKillTime;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * bulletSpeed);
+        Invoke(("KillDart"), bulletKillTime);
     }
 
     // Update is called once per frame
@@ -31,5 +33,12 @@ public class Bullet : MonoBehaviour
             print(kbVector);
             other.gameObject.SendMessage("GotHit");
         }
+    }
+
+
+
+    private void KillDart()
+    {
+        Destroy(gameObject);
     }
 }

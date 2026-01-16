@@ -78,6 +78,10 @@ X = Decided against it
             transform.eulerAngles = new Vector3(the rotation)
         but to add it would be:
             transform.Rotate(the rotation)
+    11. When affecting the transform of another object without making a new script, make a public GameObject, then put the name of that GameObject before transform
+            public GameObject exGameObj
+            exGameObject.transform.rotate(#, #, #)
+                (you can ALSO use this to change the details of any component, not just transform by using GetComponent)
  
  
  
