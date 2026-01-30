@@ -82,6 +82,7 @@ X = Decided against it
             public GameObject exGameObj
             exGameObject.transform.rotate(#, #, #)
                 (you can ALSO use this to change the details of any component, not just transform by using GetComponent)
+    12. Quaternion.identity prevents rotation on instantiate (probably from other things, just research it later on :))) )
  
  
  

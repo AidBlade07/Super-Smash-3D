@@ -39,7 +39,20 @@ public class EnemyBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "KillTrigger")
+        {
+            Destroy(gameObject);
+        }
+    }
     //private void OnCollisionEnter(Collision collision)
+
+    void SetGamer(GameObject target)
+    {
+        gamer = target;
+    }
     void DisableRagdoll()
     {
         ragdoll = false;
