@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nerfgun: {fileID: 0}
-  bulletSpeed: 700
+  bulletSpeed: 2000
   enemyKnockback: 1500
   bulletKillTime: 5
 --- !u!54 &-6263079969984788189

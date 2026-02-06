@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(CheckIfWave), 2.0f, 0f);
+        InvokeRepeating(nameof(CheckIfWave), 2.0f, 1.0f);
     }
     void SpawnEnemy()
     {

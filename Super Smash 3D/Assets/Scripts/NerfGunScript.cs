@@ -14,6 +14,7 @@ public class NerfGunScript : MonoBehaviour
     public GameObject spinOffset;
     public bool extendedClipLight;
     public float spinSpeed;
+    public Transform camT;
     private bool reloading;
     private bool spinning;
     // Start is called before the first frame update
@@ -41,13 +42,28 @@ public class NerfGunScript : MonoBehaviour
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
 
+        //check if left click shot
         if (Input.GetMouseButtonDown(0))
         {
+            //have you clicked the reload keybind in the last 2 seconds
             if (!reloading)
             {
+                //is the mag size above 0
                 if (ammoLight > 0)
                 {
-                    Instantiate(bullet, transform.position + transform.up * 0.6f + transform.forward * 0.8f, transform.rotation);
+                    RaycastHit hit;
+                    GameObject newBullet = Instantiate(bullet, transform.position + transform.up * 0.6f + transform.forward * 0.8f, transform.rotation);
+                    if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
+                    {
+                        print(hit.distance);
+                        newBullet.transform.LookAt(hit.point);
+                    }
+                    else
+                    {
+                        print("code aint locked in");
+                    }
+
+
                     ammoLight -= 1;
                     ammoL.text = ammoLight + "/" + reserveLightAmmo;
                 }
