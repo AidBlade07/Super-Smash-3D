@@ -17,6 +17,5 @@ public class QuoteHandsCode : MonoBehaviour
     {
         transform.position = playerT.position;
         transform.rotation = camT.rotation;
-
     }
 }

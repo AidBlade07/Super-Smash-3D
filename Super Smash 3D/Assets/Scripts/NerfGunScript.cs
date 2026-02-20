@@ -17,6 +17,7 @@ public class NerfGunScript : MonoBehaviour
     public Transform camT;
     private bool reloading;
     private bool spinning;
+    public bool fireRateIncreased;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +32,22 @@ public class NerfGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (extendedClipLight)
+        if (!fireRateIncreased)
         {
-            lightMagSize = 25;
-            ammoL.text = ammoLight + "/" + reserveLightAmmo;
+            if (extendedClipLight)
+            {
+                lightMagSize = 25;
+                ammoL.text = ammoLight + "/" + reserveLightAmmo;
+            }
+            else
+            {
+                lightMagSize = 12;
+                ammoL.text = ammoLight + "/" + reserveLightAmmo;
+            }
         }
         else
         {
-            lightMagSize = 12;
+            lightMagSize = 35;
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
 
@@ -51,16 +60,23 @@ public class NerfGunScript : MonoBehaviour
                 //is the mag size above 0
                 if (ammoLight > 0)
                 {
-                    RaycastHit hit;
-                    GameObject newBullet = Instantiate(bullet, transform.position + transform.up * 0.6f + transform.forward * 0.8f, transform.rotation);
-                    if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
+                    if (fireRateIncreased)
                     {
-                        print(hit.distance);
-                        newBullet.transform.LookAt(hit.point);
+                        InvokeRepeating("WeaponFire", 0, 2.0f);
                     }
                     else
                     {
-                        print("code aint locked in");
+                        RaycastHit hit;
+                        GameObject newBullet = Instantiate(bullet, transform.position + transform.up * 0.6f + transform.forward * 0.8f, transform.rotation);
+                        if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
+                        {
+                            print(hit.distance);
+                            newBullet.transform.LookAt(hit.point);
+                        }
+                        else
+                        {
+                            print("code aint locked in");
+                        }
                     }
 
 
@@ -84,6 +100,21 @@ public class NerfGunScript : MonoBehaviour
             reloading = true;
             spinning = true;
             Invoke(nameof(ReloadLight), 2f);
+        }
+    }
+
+    void WeaponFire()
+    {
+        RaycastHit hit;
+        GameObject newBullet = Instantiate(bullet, transform.position + transform.up * 0.6f + transform.forward * 0.8f, transform.rotation);
+        if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
+        {
+            print(hit.distance);
+            newBullet.transform.LookAt(hit.point);
+        }
+        else
+        {
+            print("code aint locked in");
         }
     }
     void ReloadLight()
