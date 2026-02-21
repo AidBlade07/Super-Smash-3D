@@ -33,14 +33,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.mouseScrollDelta.y > 0)
-        {
-            print("1");
-        }
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            print("2");
-        }
         transform.rotation = Quaternion.identity;
         float x = rb.velocity.x;
         float y = rb.velocity.y;
