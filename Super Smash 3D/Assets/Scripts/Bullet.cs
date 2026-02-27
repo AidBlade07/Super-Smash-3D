@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject nerfgun;
     private Rigidbody rb;
     public float bulletSpeed;
     public float enemyKnockback;
