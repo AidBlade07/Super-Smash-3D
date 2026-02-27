@@ -83,6 +83,8 @@ X = Decided against it
             exGameObject.transform.rotate(#, #, #)
                 (you can ALSO use this to change the details of any component, not just transform by using GetComponent)
     12. Quaternion.identity prevents rotation on instantiate (probably from other things, just research it later on :))) )
+    13. when doing instantiate ive found that doing a transform variable for position and rotation is likely the best method of the grounds of instantiate
+        ex.  Instantiate(bullet, camT.position, camT.rotation);
  
  
  

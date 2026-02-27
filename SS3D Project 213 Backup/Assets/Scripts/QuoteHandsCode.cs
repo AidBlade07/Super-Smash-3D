@@ -10,11 +10,15 @@ public class QuoteHandsCode : MonoBehaviour
     public int totalWeapons;
     public Transform playerT;
     public Transform camT;
-    
+    public GameObject uiCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        activeWeapon = 0;
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(false); // for loop for all weapons
+        transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).GetChild(0).gameObject.SendMessage("OnSwitch");
     }
 
     // LateUpdate is run immediately after an Update Event
@@ -22,6 +26,13 @@ public class QuoteHandsCode : MonoBehaviour
     // run every frame
     void Update()
     {
+        /*
+        if (activeWeapon == 0)
+            uiCanvas.gameObject.SendMessage("EnablePistolUI");
+
+        if (activeWeapon == 1)
+            uiCanvas.gameObject.SendMessage("EnableARUI");
+        */
         bool hasChangedWpns = false;
 
         int oldWeapon = activeWeapon;
@@ -50,6 +61,7 @@ public class QuoteHandsCode : MonoBehaviour
         {
             transform.GetChild(0).GetChild(oldWeapon).gameObject.SetActive(false);
             transform.GetChild(0).GetChild(activeWeapon).gameObject.SetActive(true);
+            transform.GetChild(0).GetChild(activeWeapon).gameObject.SendMessage("OnSwitch");
         }
 
     
