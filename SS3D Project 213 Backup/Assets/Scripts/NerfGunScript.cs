@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -34,6 +33,11 @@ public class NerfGunScript : MonoBehaviour
     public float bulletOffset;
     public Image currentlyEquipedWpn;
     public Sprite wpnImage;
+    public float recoilAmount;
+    public float timeSinceLastFire;
+    public float lastTime;
+    public float recoilSpread;
+    public float recoilDecreaseSpd;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,11 +56,29 @@ public class NerfGunScript : MonoBehaviour
         activeWeapon = 0;
         activeWeapon = 1;
         activeWeapon = 0;
+        
+        timeSinceLastFire = 0;
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if (isAssaultRifle)
+        {
+            Invoke(nameof(DecreaseRecoil), recoilDecreaseSpd);
+            if(recoilAmount < 0)
+            {
+                recoilAmount = 0;
+            }
+        }
+        if (isPistol)
+        {
+            Invoke(nameof(DecreaseRecoil), recoilDecreaseSpd);
+            if (recoilAmount < 0)
+            {
+                recoilAmount = 0;
+            }
+        }
         if (isAssaultRifle)
         {
             ammoReserveRifle = 100;
@@ -150,12 +172,8 @@ public class NerfGunScript : MonoBehaviour
             {
                 //is the mag size above 0
                 if (ammoLight > 0)
-                {                    
-                    GameObject newBullet = Instantiate(bullet, camT.position, camT.rotation);
-                    Rigidbody rb2 = newBullet.GetComponent<Rigidbody>();
-                    rb2.AddForce(newBullet.transform.forward * bulletSpeed);
-                    ammoLight -= 1;
-                    ammoL.text = ammoLight + "/" + reserveLightAmmo;
+                {
+                    Invoke(nameof(WeaponFire), 0);
                 }
             }
         }
@@ -193,6 +211,7 @@ public class NerfGunScript : MonoBehaviour
         {
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
+
     }
 
     void ReloadLight()
@@ -205,7 +224,7 @@ public class NerfGunScript : MonoBehaviour
     }
 
     void WeaponFire()
-    {
+    {        
         //have you clicked the reload keybind in the last 2 seconds
         if (!reloading)
         {
@@ -215,7 +234,32 @@ public class NerfGunScript : MonoBehaviour
                 //RaycastHit hit;
                 GameObject newBullet = Instantiate(bullet, camT.position, camT.rotation);
                 Rigidbody rb2 = newBullet.GetComponent<Rigidbody>();
+                
+                float currentTime = Time.time;
+                timeSinceLastFire = currentTime - lastTime;
+                if(lastTime == 0) 
+                { 
+                    timeSinceLastFire = 0;
+                }
+                if(timeSinceLastFire < 0.5f)
+                {
+                    recoilAmount += recoilSpread;                    
+                }
+                else
+                {
+                    recoilAmount -= recoilSpread;
+                    if(recoilAmount < 0)
+                        recoilAmount = 0;
+
+                }
+                lastTime = currentTime;
+
+                rb2 = newBullet.GetComponent<Rigidbody>();
+                float xAngle = (Random.value - 0.5f) * recoilAmount;
+                float yAngle = (Random.value - 0.5f) * recoilAmount;
+                newBullet.transform.Rotate(xAngle, yAngle, 0);
                 rb2.AddForce(newBullet.transform.forward * bulletSpeed);
+
                 /*
                 if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
                 {
@@ -234,6 +278,15 @@ public class NerfGunScript : MonoBehaviour
         }
         
         
+    }
+
+    void IncreaseRecoil()
+    {
+        recoilAmount += recoilSpread;
+    }
+    void DecreaseRecoil()
+    {
+        recoilAmount -= recoilSpread;
     }
     void OnSwitch()
     {
