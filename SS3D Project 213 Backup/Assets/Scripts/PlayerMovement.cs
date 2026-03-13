@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pauseMenu;
     public float gamePauseSpeed;
     public float gameSpeed;
+    public GameObject killTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -129,6 +130,15 @@ public class PlayerMovement : MonoBehaviour
                     rb.AddForce(new Vector3(0, jumpHeight, 0));
                 }
             }   
+        }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "KillTrigger")
+        {
+
         }
     }
 }

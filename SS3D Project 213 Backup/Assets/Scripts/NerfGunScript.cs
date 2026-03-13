@@ -38,6 +38,7 @@ public class NerfGunScript : MonoBehaviour
     public float lastTime;
     public float recoilSpread;
     public float recoilDecreaseSpd;
+    public bool infAmmo;
     // Start is called before the first frame update
     void Start()
     {
@@ -153,15 +154,18 @@ public class NerfGunScript : MonoBehaviour
             rend.enabled = false;
         }
         */
-        if (extendedClipLight)
+        if (isPistol)
         {
-            lightMagSize = 25;
-            ammoL.text = ammoLight + "/" + reserveLightAmmo + "         " + activeWeapon;
-        }
-        else
-        {
-            lightMagSize = 12;
-            ammoL.text = ammoLight + "/" + reserveLightAmmo;
+        if(extendedClipLight)
+            {
+                lightMagSize = 25;
+                ammoL.text = ammoLight + "/" + reserveLightAmmo + "         " + activeWeapon;
+            }
+            else
+            {   
+                lightMagSize = 12;
+                ammoL.text = ammoLight + "/" + reserveLightAmmo;
+            }
         }
 
 //      check if left click shot           is this weapon a pistol?
@@ -211,7 +215,10 @@ public class NerfGunScript : MonoBehaviour
         {
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
-
+        if(infAmmo)
+        {
+            ammoLight = 999;
+        }
     }
 
     void ReloadLight()
@@ -247,18 +254,18 @@ public class NerfGunScript : MonoBehaviour
                 }
                 else
                 {
-                    recoilAmount -= recoilSpread;
-                    if(recoilAmount < 0)
-                        recoilAmount = 0;
-
+                    DecreaseRecoil();
                 }
                 lastTime = currentTime;
 
                 rb2 = newBullet.GetComponent<Rigidbody>();
                 float xAngle = (Random.value - 0.5f) * recoilAmount;
-                float yAngle = (Random.value - 0.5f) * recoilAmount;
+                float yAngle = (Random.value - 0.5f) * recoilAmount;                
                 newBullet.transform.Rotate(xAngle, yAngle, 0);
                 rb2.AddForce(newBullet.transform.forward * bulletSpeed);
+                transform.localEulerAngles = new Vector3 (-xAngle, yAngle, 0);
+                transform.Rotate(-59.814f, 2.543f, 83.606f);
+
 
                 /*
                 if (Physics.Raycast(camT.position, camT.forward, out hit, 200000f))
@@ -286,7 +293,12 @@ public class NerfGunScript : MonoBehaviour
     }
     void DecreaseRecoil()
     {
-        recoilAmount -= recoilSpread;
+        if (recoilAmount > 0)
+        {
+            recoilAmount -= recoilSpread;
+            if (recoilAmount < 0)
+                recoilAmount = 0;
+        }
     }
     void OnSwitch()
     {
