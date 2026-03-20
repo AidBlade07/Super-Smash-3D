@@ -39,6 +39,7 @@ public class NerfGunScript : MonoBehaviour
     public float recoilSpread;
     public float recoilDecreaseSpd;
     public bool infAmmo;
+    public bool canShoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -169,7 +170,7 @@ public class NerfGunScript : MonoBehaviour
         }
 
 //      check if left click shot           is this weapon a pistol?
-        if (Input.GetMouseButtonDown(0) && isPistol)
+        if (Input.GetMouseButtonDown(0) && isPistol && canShoot)
         {
             //have you clicked the reload keybind in the last 2 seconds
             if (!reloading)
@@ -183,7 +184,7 @@ public class NerfGunScript : MonoBehaviour
         }
 
 //      check if left click held       is this weapon an AR?
-        if (Input.GetMouseButtonDown(0) && isAssaultRifle)
+        if (Input.GetMouseButtonDown(0) && isAssaultRifle && canShoot)
         {
             InvokeRepeating(nameof(WeaponFire), 0, assaultRifleRate);
         }
@@ -208,6 +209,7 @@ public class NerfGunScript : MonoBehaviour
         }
         if (activeWeapon == 0)
         {
+            camera.SendMessage("")
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
 
@@ -218,6 +220,10 @@ public class NerfGunScript : MonoBehaviour
         if(infAmmo)
         {
             ammoLight = 999;
+        }
+        if(currentlyEquipedWpn == 0)
+        {
+
         }
     }
 
@@ -286,7 +292,12 @@ public class NerfGunScript : MonoBehaviour
         
         
     }
+    
 
+    void disableShooting()
+    {
+        canShoot = false;
+    }
     void IncreaseRecoil()
     {
         recoilAmount += recoilSpread;

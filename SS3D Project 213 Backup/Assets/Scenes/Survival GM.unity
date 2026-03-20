@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 108329198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: -138.6, z: 1.9}
+  m_LocalPosition: {x: -0.9, y: -47.9, z: 1.9}
   m_LocalScale: {x: 331.5, y: 17.68, z: 331.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -985,7 +985,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 2142673497}
   gamePauseSpeed: 0.001
   gameSpeed: 1
-  killTrigger: {fileID: 0}
+  killTrigger: {fileID: 108329198}
+  camera: {fileID: 963194225}
 --- !u!54 &554897351
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1619,6 +1620,7 @@ MonoBehaviour:
   recoilSpread: 0
   recoilDecreaseSpd: 0
   infAmmo: 0
+  canShoot: 0
 --- !u!1001 &802870432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2055,6 +2057,10 @@ MonoBehaviour:
   yAngle: 0
   cameraIsLockedOn: 1
   player: {fileID: 554897345}
+  isDead: 0
+  deathGameObject: {fileID: 1404476680}
+  gun0: {fileID: 751679311}
+  gun1: {fileID: 1883284336}
 --- !u!1 &1046498002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,7 +2826,7 @@ Transform:
   m_GameObject: {fileID: 1404476676}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18308571, y: 0.37509388, z: -0.075836584, w: 0.90555674}
-  m_LocalPosition: {x: -36.42, y: 18.15, z: -34.73}
+  m_LocalPosition: {x: -35.8, y: 17.71, z: -35.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3839,6 +3845,7 @@ MonoBehaviour:
   recoilSpread: 4
   recoilDecreaseSpd: 0.01
   infAmmo: 1
+  canShoot: 0
 --- !u!114 &1883284341
 MonoBehaviour:
   m_ObjectHideFlags: 0

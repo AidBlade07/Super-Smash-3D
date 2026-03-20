@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -8,6 +9,10 @@ public class CameraScript : MonoBehaviour
     public float yAngle;
     public bool cameraIsLockedOn;
     public GameObject player;
+    public bool isDead;
+    public Transform deathGameObject;
+    public GameObject gun0;
+    public GameObject gun1;
 
     // Start is called before the first frame update
     void Start()
@@ -32,17 +37,37 @@ public class CameraScript : MonoBehaviour
         //print(mouseX);
         //print(mouseY);
 
-        if(cameraIsLockedOn)
-        {
-            transform.position = player.transform.position;
-        }
-        else
-        {
-
-        }
+        
         if(Input.GetKeyDown(KeyCode.V))
         {
             cameraIsLockedOn = !cameraIsLockedOn;
         }
+        if (isDead) 
+        {
+            
+            transform.position = deathGameObject.transform.position;
+            transform.rotation = deathGameObject.transform.rotation;
+        }
+        else
+        {
+            
+        }
+
+        gun1.gameObject.SendMessage("disableShooting");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        gun0.gameObject.SendMessage("disableShooting");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+    void PlayerDeath()
+    {
+        cameraIsLockedOn = false;
+        isDead = true;
+        print("hey im dead get better");        
     }
 }
