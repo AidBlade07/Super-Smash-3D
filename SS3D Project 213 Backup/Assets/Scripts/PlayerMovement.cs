@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float gamePauseSpeed;
     public float gameSpeed;
     public GameObject killTrigger;
-    new public GameObject camera;
+    public GameObject cambruh;
 
     // Start is called before the first frame update
     void Start()
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.tag == "KillTrigger")
         {
-            camera.gameObject.SendMessage("PlayerDeath");
+            cambruh.gameObject.SendMessage("PlayerDeath");
         }
     }
 }

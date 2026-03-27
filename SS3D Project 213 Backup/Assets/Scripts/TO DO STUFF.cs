@@ -42,22 +42,22 @@ Menu screen stuff
 
 
 To do
-    * [ ] Add nerf blasters
-    * [ ] Add enemies
-    * [ ] Add enemy movement
-    * [ ] Add player
+    * [d] Add nerf blasters
+    * [d] Add enemies
+    * [d] Add enemy movement
+    * [d] Add player
     * [d] Add movement
     * [d] Add camera moving
     * [ ] Add crouching
-    * [ ] Add ammo/reloading
-    * [ ] Weapon switching
-    * [ ] Add character models (smth to do on my time)
+    * [d] Add ammo/reloading
+    * [d] Weapon switching
+    * [d] Add character models (smth to do on my time)
     * [p] Add separate menus
     * [x] Change movement to addForce
             (ended up ditching this and doing transform.translate)
     * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
-    * [p] Connect weapon to the player + rotation
-    * [ ] Have camera move to the "Camera Death Position" GameObject
+    * [d] Connect weapon to the player + rotation
+    * [p] Have camera move to the "Camera Death Position" GameObject
              (possibly) have mutiple game objects and a Random.value will pick one on death, parent the camera to the game object of choice to avoid screwing with the camera code
 
 Key: 

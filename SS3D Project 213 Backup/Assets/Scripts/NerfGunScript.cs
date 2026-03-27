@@ -40,6 +40,7 @@ public class NerfGunScript : MonoBehaviour
     public float recoilDecreaseSpd;
     public bool infAmmo;
     public bool canShoot;
+    public GameObject cambruh;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +66,14 @@ public class NerfGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(activeWeapon == 0)
+        {
+            cambruh.SendMessage("AW0");                
+        }
+        if (activeWeapon == 1)
+        {
+            cambruh.SendMessage("AW1");
+        }
         if (isAssaultRifle)
         {
             Invoke(nameof(DecreaseRecoil), recoilDecreaseSpd);
@@ -160,7 +169,7 @@ public class NerfGunScript : MonoBehaviour
         if(extendedClipLight)
             {
                 lightMagSize = 25;
-                ammoL.text = ammoLight + "/" + reserveLightAmmo + "         " + activeWeapon;
+                ammoL.text = ammoLight + "/" + reserveLightAmmo;
             }
             else
             {   
@@ -208,8 +217,7 @@ public class NerfGunScript : MonoBehaviour
             Invoke(nameof(ReloadLight), 2f);
         }
         if (activeWeapon == 0)
-        {
-            camera.SendMessage("")
+        {            
             ammoL.text = ammoLight + "/" + reserveLightAmmo;
         }
 
@@ -220,11 +228,7 @@ public class NerfGunScript : MonoBehaviour
         if(infAmmo)
         {
             ammoLight = 999;
-        }
-        if(currentlyEquipedWpn == 0)
-        {
-
-        }
+        }        
     }
 
     void ReloadLight()
