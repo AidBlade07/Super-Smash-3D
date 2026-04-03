@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         xMovement = new Vector3(xMovement.x, 0, xMovement.z);
         zMovement = new Vector3(zMovement.x, 0, zMovement.z);
         xMovement.Normalize();
+        xMovement.Normalize();
         zMovement.Normalize();
 
 

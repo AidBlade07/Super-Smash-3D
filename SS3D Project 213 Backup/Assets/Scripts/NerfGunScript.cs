@@ -40,7 +40,7 @@ public class NerfGunScript : MonoBehaviour
     public float recoilDecreaseSpd;
     public bool infAmmo;
     public bool canShoot;
-    public GameObject cambruh;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -66,14 +66,7 @@ public class NerfGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activeWeapon == 0)
-        {
-            cambruh.SendMessage("AW0");                
-        }
-        if (activeWeapon == 1)
-        {
-            cambruh.SendMessage("AW1");
-        }
+        
         if (isAssaultRifle)
         {
             Invoke(nameof(DecreaseRecoil), recoilDecreaseSpd);
