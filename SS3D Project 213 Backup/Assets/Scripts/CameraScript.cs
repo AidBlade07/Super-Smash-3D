@@ -21,6 +21,7 @@ public class CameraScript : MonoBehaviour
     public Vector3 velocity = new Vector3 (0, 0, 0);
     Vector3 targetPos;    
     public GameObject hands;
+    public float playerCrouchPos;
     public Transform playerT;
     
 
@@ -74,6 +75,16 @@ public class CameraScript : MonoBehaviour
         else if(cameraIsLockedOn)
         {
             transform.position = player.transform.position;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                player.GetComponent<MeshRenderer>().enabled = false;
+                print("helloworld(''print'')");
+                transform.position = player.transform.position + new Vector3(0, playerCrouchPos, 0);
+            }
+            else if (!Input.GetKey(KeyCode.LeftControl))
+            {
+                player.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
         else
         {

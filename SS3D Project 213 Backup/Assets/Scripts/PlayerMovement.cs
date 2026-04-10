@@ -109,21 +109,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        
+
+            /*
+            im prob gonna forget what im doing here and or how to explain it,
+            so im making it so that when a xmovement key and a zmovement key
+            are both pressed, it automatically halfs the speed oh both movements
+            to avoid extra speed when moving diagonally
+
+            -aiden
+
+            */
 
 
-
-        /*
-        im prob gonna forget what im doing here and or how to explain it,
-        so im making it so that when a xmovement key and a zmovement key
-        are both pressed, it automatically halfs the speed oh both movements
-        to avoid extra speed when moving diagonally
-
-        -aiden
-
-        */
-
-
-        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
         if(Physics.Raycast(transform.position, Vector3.down, 1.01f))
         {
             if (Input.GetKeyDown("space"))

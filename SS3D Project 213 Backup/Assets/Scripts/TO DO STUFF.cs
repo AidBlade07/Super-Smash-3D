@@ -48,18 +48,21 @@ To do
     * [d] Add player
     * [d] Add movement
     * [d] Add camera moving
-    * [ ] Add crouching
+    * [p] Add crouching
     * [d] Add ammo/reloading
     * [d] Weapon switching
     * [d] Add character models (smth to do on my time)
-    * [p] Add separate menus
+    * [ ] Add separate menus
     * [x] Change movement to addForce
             (ended up ditching this and doing transform.translate)
     * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
     * [d] Connect weapon to the player + rotation
-    * [p] Have camera move to the "Camera Death Position" GameObject
+    * [d] Have camera move to the "Camera Death Position" GameObject
              (possibly) have mutiple game objects and a Random.value will pick one on death, parent the camera to the game object of choice to avoid screwing with the camera code
-
+    * [ ] screw around with Headers, and Range
+             https://docs.unity3d.com/6000.0/Documentation/ScriptReference/RangeAttribute.html  range attribute
+             https://docs.unity3d.com/6000.0/Documentation/ScriptReference/HeaderAttribute.html header attribute
+    *
 Key: 
 D = Done 
 P = In progress
