@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using JetBrains.Annotations;
 using System.Threading;
 using System;
+using Unity.VisualScripting;
 
 public class CameraScript : MonoBehaviour
 {
@@ -23,14 +25,23 @@ public class CameraScript : MonoBehaviour
     public GameObject hands;
     public float playerCrouchPos;
     public Transform playerT;
-    
+    public GameObject deadUi;
+    public GameObject spaceKeyUi;
+    private Image imageRenderer;
+    private Image imageRendererSpace;
+    float opacityTime = 0;
+    float imageOpacity;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        imageOpacity = 0;
         Cursor.lockState = CursorLockMode.Locked;
         targetPos = deathGameObject.position;
+        imageRenderer = deadUi.GetComponent<Image>();
+        imageRendererSpace = spaceKeyUi.GetComponent<Image>();
         //targetPosRot = deathGameObject.eulerAngles;
     }
     
@@ -93,6 +104,11 @@ public class CameraScript : MonoBehaviour
 
         if(isDead) 
         {
+            opacityTime += Time.deltaTime;
+            imageOpacity = Mathf.Lerp(0, 1, opacityTime/3);
+            imageRenderer.color = new Color(1f, 1f, 1f, imageOpacity);
+            imageRendererSpace.color = new Color(1f, 1f, 1f, imageOpacity);
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -101,9 +117,14 @@ public class CameraScript : MonoBehaviour
     }
     void PlayerDeath()
     {
+        opacityTime = 0;
+        imageOpacity = 0;
         Destroy(hands);
         cameraIsLockedOn = false;
         isDead = true;
         print("hey im dead get better");
+        deadUi.gameObject.SetActive(true);
+        spaceKeyUi.gameObject.SetActive(true);
+
     }
 }
