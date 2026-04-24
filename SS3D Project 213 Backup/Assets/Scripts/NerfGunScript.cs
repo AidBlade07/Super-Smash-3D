@@ -40,10 +40,14 @@ public class NerfGunScript : MonoBehaviour
     public float recoilDecreaseSpd;
     public bool infAmmo;
     public bool canShoot;
+    Vector3 startingRotation;
     
     // Start is called before the first frame update
     void Start()
     {
+        
+        startingRotation = transform.eulerAngles;
+
         if (isAssaultRifle)
         // if pistol clip is extended
         if(extendedClipLight && isPistol)
@@ -194,14 +198,7 @@ public class NerfGunScript : MonoBehaviour
         {
                 CancelInvoke(nameof(WeaponFire));        
         }
-        if (spinning)
-        {
-            spinOffset.transform.Rotate(spinSpeed * Time.deltaTime, 0, 0);
-        }
-        else
-        {
-            spinOffset.transform.localEulerAngles = new Vector3(0, 0, 0);
-        }
+       
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -267,6 +264,14 @@ public class NerfGunScript : MonoBehaviour
                 newBullet.transform.Rotate(xAngle, yAngle, 0);
                 rb2.AddForce(newBullet.transform.forward * bulletSpeed);
                 transform.localEulerAngles = new Vector3 (-xAngle, yAngle, 0);
+                if(isAssaultRifle)
+                    transform.Rotate(-59.814f, 2.543f, 83.606f);
+                else if (isPistol)
+                    transform.Rotate(180f, -90f, 0f);
+
+
+                /*
+                transform.localEulerAngles = startingRotation;
                 transform.Rotate(-59.814f, 2.543f, 83.606f);
 
 
@@ -285,11 +290,20 @@ public class NerfGunScript : MonoBehaviour
                 ammoLight -= 1;
                 ammoL.text = ammoLight + "/" + reserveLightAmmo;
             }
-        }
-        
-        
+        }                
     }
-    
+
+    private void LateUpdate()
+    {
+        if (spinning)
+        {
+            spinOffset.transform.Rotate(spinSpeed * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+            spinOffset.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+    }
 
     void disableShooting()
     {

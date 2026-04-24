@@ -30,10 +30,10 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void CheckIfWave()
-    {
-        if (!waveActive)
         {
-            Invoke(nameof(SpawnEnemy), 2f);
+            if (!waveActive)
+            {
+                    Invoke(nameof(SpawnEnemy), 2f);
+            }
         }
-    }
 }

@@ -20,6 +20,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         
+
+
         if(!ragdoll)
         {
             rbE.velocity = new Vector3(0, rbE.velocity.y, 0);
@@ -62,4 +64,5 @@ public class EnemyBehaviour : MonoBehaviour
         ragdoll = true;
         Invoke("DisableRagdoll", 2f);
     }
+    
 }

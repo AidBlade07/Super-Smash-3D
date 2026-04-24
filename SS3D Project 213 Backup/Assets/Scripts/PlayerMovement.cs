@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //note to self: when setting/initalizing a variable, you can't include the data type or privacy modifier (public or private)
         gamePauseSpeed = 0.000001f;
         gameSpeed = 1.0f;

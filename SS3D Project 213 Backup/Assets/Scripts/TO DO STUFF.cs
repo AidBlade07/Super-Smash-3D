@@ -48,7 +48,7 @@ To do
     * [d] Add player
     * [d] Add movement
     * [d] Add camera moving
-    * [p] Add crouching
+    * [d] Add crouching
     * [d] Add ammo/reloading
     * [d] Weapon switching
     * [d] Add character models (smth to do on my time)

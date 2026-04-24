@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6103be756c25c724c95b8b033a3e356b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1981,7 +1981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cbd309c9ac1616245b9ed8ec6351515b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: cbd309c9ac1616245b9ed8ec6351515b, type: 3}
       propertyPath: m_Layer
@@ -4221,7 +4221,7 @@ MonoBehaviour:
   lightMagSize: 0
   spinOffset: {fileID: 1439439806}
   extendedClipLight: 0
-  spinSpeed: 360
+  spinSpeed: 2880
   camT: {fileID: 963194228}
   isPistol: 0
   isAssaultRifle: 1
