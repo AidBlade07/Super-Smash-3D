@@ -42,6 +42,7 @@ public class NerfGunScript : MonoBehaviour
     public bool canShoot;
     Vector3 startingRotation;
     
+    
     // Start is called before the first frame update
     void Start()
     {

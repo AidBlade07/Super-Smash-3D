@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed;
     public float enemyKnockback;
     public float bulletKillTime;
+    public GameObject enemy;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +27,13 @@ public class Bullet : MonoBehaviour
     {
         if(other.gameObject.tag == "enemy")
         {
-            Rigidbody rbE = other.gameObject.GetComponent<Rigidbody>();
+            //Rigidbody rbE = other.gameObject.GetComponent<Rigidbody>();
             // print(rbE.mass);
             Vector3 kbVector = transform.forward * enemyKnockback;
-            rbE.AddForce(kbVector);
+            //
             print(kbVector);
-            other.gameObject.SendMessage("GotHit");
+            object[] parameters = { kbVector, damage};
+            other.gameObject.SendMessage("GotHit", parameters);
         }
     }
 

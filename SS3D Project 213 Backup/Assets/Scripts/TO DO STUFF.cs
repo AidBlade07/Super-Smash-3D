@@ -90,6 +90,7 @@ X = Decided against it
     12. Quaternion.identity prevents rotation on instantiate (probably from other things, just research it later on :))) )
     13. when doing instantiate ive found that doing a transform variable for position and rotation is likely the best method of the grounds of instantiate
         ex.  Instantiate(bullet, camT.position, camT.rotation);
+    14. There are other types of methods other then void that each do a different thing, also if you declare a float and dont tell it to return a float, it freaks out, same thing with the other methods
  
  
  

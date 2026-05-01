@@ -10,6 +10,15 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rbE;
     public float enemySpeed;
     public bool ragdoll;
+    public int hp;
+    public int maxHp;
+
+    private float CalcKnockback(float hpPercent)
+    {
+        float knockbackMultiplier = (hpPercent * -25f) + 30;
+        return knockbackMultiplier / 2;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +26,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    
     void Update()
     {
         
@@ -59,9 +70,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         ragdoll = false;
     }
-    void GotHit()
+    void GotHit(object[] parameters)
     {
+        Vector3 kbVector = (Vector3)parameters[0];
+        int damage = (int)parameters[1];
         ragdoll = true;
+        rbE.AddForce(kbVector * CalcKnockback(hp / maxHp));
         Invoke("DisableRagdoll", 2f);
     }
     
