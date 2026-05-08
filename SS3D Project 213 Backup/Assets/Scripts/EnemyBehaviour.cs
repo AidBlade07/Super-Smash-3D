@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -12,10 +13,12 @@ public class EnemyBehaviour : MonoBehaviour
     public bool ragdoll;
     public int hp;
     public int maxHp;
+    public TMP_Text eHp;
 
     private float CalcKnockback(float hpPercent)
     {
         float knockbackMultiplier = (hpPercent * -25f) + 30;
+        eHp.text = hp + " ";
         return knockbackMultiplier / 2;
     }
 
@@ -29,9 +32,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     
     void Update()
-    {
-        
-
+    {        
+        if(hp <= 0)
+        {
+            Destroy(gameObject);
+        }
 
         if(!ragdoll)
         {
@@ -74,6 +79,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Vector3 kbVector = (Vector3)parameters[0];
         int damage = (int)parameters[1];
+        hp -= damage;
         ragdoll = true;
         rbE.AddForce(kbVector * CalcKnockback(hp / maxHp));
         Invoke("DisableRagdoll", 2f);

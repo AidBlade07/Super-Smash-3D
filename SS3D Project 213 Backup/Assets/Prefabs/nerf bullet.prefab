@@ -107,10 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e05cf332789704798e655c71579a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nerfgun: {fileID: 0}
   bulletSpeed: 2000
-  enemyKnockback: 1500
+  enemyKnockback: 100
   bulletKillTime: 5
+  enemy: {fileID: 0}
+  damage: 15
 --- !u!54 &-6263079969984788189
 Rigidbody:
   m_ObjectHideFlags: 0
