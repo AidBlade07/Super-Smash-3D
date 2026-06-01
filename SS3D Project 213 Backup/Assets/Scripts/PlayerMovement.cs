@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,13 +22,24 @@ public class PlayerMovement : MonoBehaviour
     public float gameSpeed;
     public GameObject killTrigger;
     public GameObject cambruh;
+    public int hp;
+    public int maxHp;
+    public TMP_Text pHp;
+    public GameObject panelG;
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        hp = 100;
         //note to self: when setting/initalizing a variable, you can't include the data type or privacy modifier (public or private)
         gamePauseSpeed = 0.000001f;
         gameSpeed = 1.0f;
+
+        TMP_Text txt = pHp.GetComponent<TMP_Text>();
+        float hPer = hp / maxHp;
+        float green = 0.41f;
+        float hue = hPer * green;
+        pHp.color = Color.HSVToRGB(hue, 1, 0.85f);
 
         rb = GetComponent<Rigidbody>();
         Renderer rend = GetComponent<Renderer>();
@@ -136,7 +149,14 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            hp -= 5;
+            pHp.text = hp + " ";
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "KillTrigger")
