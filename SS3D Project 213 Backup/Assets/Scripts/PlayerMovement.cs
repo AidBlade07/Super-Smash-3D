@@ -35,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
         gamePauseSpeed = 0.000001f;
         gameSpeed = 1.0f;
 
-        TMP_Text txt = pHp.GetComponent<TMP_Text>();
-        float hPer = hp / maxHp;
-        float green = 0.41f;
-        float hue = hPer * green;
-        pHp.color = Color.HSVToRGB(hue, 1, 0.85f);
+        //TMP_Text txt = pHp.GetComponent<TMP_Text>();
+        //float hPer = hp / maxHp;
+        //float green = 0.41f;
+        //float hue = hPer * green;
+        //pHp.color = Color.HSVToRGB(hue, 1, 0.85f);
 
         rb = GetComponent<Rigidbody>();
         Renderer rend = GetComponent<Renderer>();
@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         transform.rotation = Quaternion.identity;
         float x = rb.velocity.x;
         float y = rb.velocity.y;
@@ -154,7 +156,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             hp -= 5;
+            if(hp > 0)
             pHp.text = hp + " ";
+            if (hp <= 0)
+            {
+                pHp.text = "0";
+                cambruh.gameObject.SendMessage("PlayerDeath");
+            }
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-
+    public int enemiesInWave;
+    public int wave;
+    public int enemiesRemaining;
+    public int wavesRemaining;
+    public TMP_Text wvEnmTxt;
     public GameObject enemyBean;
     public GameObject[] spawnPlats;
     public bool waveActive;

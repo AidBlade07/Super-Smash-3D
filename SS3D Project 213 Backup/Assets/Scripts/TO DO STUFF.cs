@@ -52,7 +52,7 @@ To do
     * [d] Add ammo/reloading
     * [d] Weapon switching
     * [d] Add character models (smth to do on my time)
-    * [ ] Add separate menus
+    * [x] Add separate menus
     * [x] Change movement to addForce
             (ended up ditching this and doing transform.translate)
     * [ ] Connect the pause buttons to scene switching, and connect the main buttons to game playing
