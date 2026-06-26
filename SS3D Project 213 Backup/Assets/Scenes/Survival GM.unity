@@ -909,6 +909,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd57d71e7d4c714f81943709b12a975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rounds:
+  - waveData:
+    - prefab: {fileID: 0}
+      count: 0
   enemiesInWave: 0
   wave: 0
   enemiesRemaining: 0
